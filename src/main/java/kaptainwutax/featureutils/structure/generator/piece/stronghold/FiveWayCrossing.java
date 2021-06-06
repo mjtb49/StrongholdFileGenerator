@@ -54,6 +54,8 @@ public class FiveWayCrossing extends Stronghold.Piece {
 		if(this.upperRightExists) {
 			this.method_14873(gen, start, pieces, rand, int_2, 7);
 		} else start.addPiece(null);
+
+		start.correctOrder5Way();
 	}
 
 	public static FiveWayCrossing createPiece(List<Stronghold.Piece> pieces, JRand rand, int x, int y, int z, Direction facing, int pieceId) {

@@ -33,6 +33,8 @@ public class Corridor extends Stronghold.Piece {
 		if(this.rightExitExists) {
 			this.method_14873(gen, start, pieces, rand, 1, 2);
 		} else start.addPiece(null);
+
+		start.correctOrderSquareAndCorridor();
 	}
 
 	public static Corridor createPiece(List<Stronghold.Piece> pieces, JRand rand, int x, int y, int z, Direction facing, int pieceId) {
