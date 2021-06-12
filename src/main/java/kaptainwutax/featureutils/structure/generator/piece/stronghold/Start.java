@@ -1,5 +1,6 @@
 package kaptainwutax.featureutils.structure.generator.piece.stronghold;
 import kaptainwutax.featureutils.structure.Stronghold;
+import kaptainwutax.featureutils.structure.generator.StrongholdGenerator;
 import kaptainwutax.seedutils.lcg.rand.JRand;
 import kaptainwutax.seedutils.util.Direction;
 
@@ -22,7 +23,7 @@ public class Start extends SpiralStaircase {
 		for (int i = 0; i < pieces.size(); i++) {
 			Stronghold.Piece p = pieces.get(i);
 			index.put(p, i);
-			String result = p.getClass().getSimpleName();
+			String result = p.getClass().getSimpleName() + " " + getDirectionLetter(p);
 			List<Stronghold.Piece> ch = tree.get(p);
 			for (int j = 0; j < ch.size(); j++) {
 				if (ch.get(j) == null) {
@@ -58,9 +59,9 @@ public class Start extends SpiralStaircase {
 						break;
 					default:
 				}
-			} else {
-				System.err.println("Attempted to correct other room as if 5 Way");
 			}
+		} else {
+			System.err.println("Attempted to correct other room as if 5 Way");
 		}
 	}
 
@@ -80,6 +81,21 @@ public class Start extends SpiralStaircase {
 			}
 		} else {
 			System.err.println("Attempted to correct other room as if square or corridor");
+		}
+	}
+
+	public char getDirectionLetter(Stronghold.Piece piece) {
+		switch (piece.getFacing()) {
+			case NORTH:
+				return 'N';
+			case SOUTH:
+				return 'S';
+			case WEST:
+				return 'W';
+			case EAST:
+				return 'E';
+			default:
+				return '?';
 		}
 	}
 }
